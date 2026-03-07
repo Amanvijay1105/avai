@@ -5,7 +5,8 @@ SRC = src/core/gulabo.c \
       src/core/parser.c \
       src/core/executor.c \
       src/core/redirection.c \
-      src/core/pipe.c
+      src/core/pipe.c \
+      src/core/launcher.c
 
 all:
 	mkdir -p bin

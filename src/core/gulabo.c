@@ -6,6 +6,7 @@
 #include "../include/parser.h"
 #include "../include/executor.h"
 #include "../include/redirection.h"
+#include "../include/launcher.h"
 #include "../include/pipe.h"
 #define MAX_INPUT 256
 #define MAX_HISTORY 100
@@ -60,6 +61,10 @@ int main()
             for (int i = 0; i < history_count; i++)
                 printf("%d %s\n", i + 1, history[i]);
 
+            continue;
+        }
+        if (strcmp(args[0], "open") == 0) {
+            open_target(args);
             continue;
         }
 
