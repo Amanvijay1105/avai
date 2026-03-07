@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "../include/parser.h"
 #include "../include/executor.h"
 
 #define MAX_INPUT 256
+#define MAX_HISTORY 100
+
+char history[MAX_HISTORY][MAX_INPUT];
+int history_count = 0;
 
 int main()
 {
@@ -22,15 +27,23 @@ int main()
 
         input[strcspn(input, "\n")] = 0;
 
-        if (strcmp(input, "exit") == 0)
-            break;
+        if (strlen(input) == 0)
+            continue;
+        if (history_count < MAX_HISTORY)
+        {
+            strcpy(history[history_count], input);
+            history_count++;
+        }
+
         parse_command(input, args);
 
         if (args[0] == NULL)
             continue;
 
         if (strcmp(args[0], "exit") == 0)
+        {
             break;
+        }
 
         if (strcmp(args[0], "cd") == 0)
         {
@@ -43,12 +56,22 @@ int main()
             {
                 perror("cd failed");
             }
+
+            continue;
         }
-        else
+
+        if (strcmp(args[0], "history") == 0)
         {
 
-            execute_command(args);
+            for (int i = 0; i < history_count; i++)
+            {
+                printf("%d %s\n", i + 1, history[i]);
+            }
+
+            continue;
         }
+
+        execute_command(args);
     }
 
     return 0;
