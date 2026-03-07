@@ -64,6 +64,7 @@ int main()
 
         int append_index = find_append(args);
         int redirect_index = find_redirect(args);
+        int input_index = find_input(args);
 
         if (append_index != -1)
         {
@@ -72,6 +73,10 @@ int main()
         else if (redirect_index != -1)
         {
             execute_redirect(args, redirect_index);
+        }
+        else if (input_index != -1)
+        {
+            execute_input(args, input_index);
         }
         else
         {

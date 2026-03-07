@@ -41,3 +41,4 @@ core.*
 # Test binaries
 tests/*.out
 tests/*.exe
+.idea
