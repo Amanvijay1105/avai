@@ -1,0 +1,43 @@
+# Build output
+bin/
+build/
+
+# Object files
+*.o
+
+# Executables
+*.out
+*.exe
+gulabo
+
+# Static / shared libraries
+*.a
+*.so
+*.dylib
+
+# Debug symbols
+*.dSYM/
+
+# Temporary files
+*.tmp
+*.log
+*.cache
+
+# Core dumps
+core
+core.*
+
+# Editor files
+.vscode/
+.idea/
+
+# MacOS junk
+.DS_Store
+
+# Swap files
+*.swp
+*.swo
+
+# Test binaries
+tests/*.out
+tests/*.exe
