@@ -4,11 +4,12 @@ CFLAGS = -Wall -Wextra
 SRC = src/core/gulabo.c \
       src/core/parser.c \
       src/core/executor.c \
-      src/core/redirection.c
+      src/core/redirection.c \
+      src/core/pipe.c
 
 all:
 	mkdir -p bin
 	$(CC) $(CFLAGS) $(SRC) -o bin/gulabo
 
 clean:
-	rm -rf bin/gulabo
+	rm -f bin/gulabo

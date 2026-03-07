@@ -7,14 +7,17 @@ void execute_command(char **args)
 {
     pid_t pid = fork();
 
-    if (pid == 0) {
+    if (pid == 0)
+    {
         execvp(args[0], args);
         perror("exec failed");
     }
-    else if (pid > 0) {
+    else if (pid > 0)
+    {
         wait(NULL);
     }
-    else {
+    else
+    {
         perror("fork failed");
     }
 }

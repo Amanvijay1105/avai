@@ -2,10 +2,11 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+
 #include "../include/parser.h"
 #include "../include/executor.h"
 #include "../include/redirection.h"
-
+#include "../include/pipe.h"
 #define MAX_INPUT 256
 #define MAX_HISTORY 100
 
@@ -62,21 +63,26 @@ int main()
             continue;
         }
 
+        int pipe_index = find_pipe(args);
+        int input_index = find_input(args);
         int append_index = find_append(args);
         int redirect_index = find_redirect(args);
-        int input_index = find_input(args);
 
-        if (append_index != -1)
+        if (pipe_index != -1)
+        {
+            execute_pipe(args, pipe_index);
+        }
+        else if (input_index != -1)
+        {
+            execute_input(args, input_index);
+        }
+        else if (append_index != -1)
         {
             execute_append(args, append_index);
         }
         else if (redirect_index != -1)
         {
             execute_redirect(args, redirect_index);
-        }
-        else if (input_index != -1)
-        {
-            execute_input(args, input_index);
         }
         else
         {
