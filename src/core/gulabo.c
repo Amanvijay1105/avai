@@ -9,6 +9,8 @@
 #include "../include/sysinfo.h"
 #include "../include/launcher.h"
 #include "../include/runner.h"
+#include "../include/listener.h"
+#include "../include/task.h"
 #include "../include/pipe.h"
 #define MAX_INPUT 256
 #define MAX_HISTORY 100
@@ -68,6 +70,16 @@ int main()
         if (strcmp(args[0], "open") == 0)
         {
             open_target(args);
+            continue;
+        }
+        if (strcmp(args[0], "task") == 0)
+        {
+            run_task(args);
+            continue;
+        }
+        if (strcmp(args[0], "listen") == 0)
+        {
+            listen_command();
             continue;
         }
         if (strcmp(args[0], "run") == 0)

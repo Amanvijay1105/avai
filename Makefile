@@ -7,7 +7,9 @@ SRC = src/core/gulabo.c \
       src/core/pipe.c \
       src/core/launcher.c \
       src/core/sysinfo.c \
-      src/core/runner.c
+      src/core/runner.c \
+      src/core/task.c \
+      src/core/listener.c
 
 all:
 	mkdir -p bin
