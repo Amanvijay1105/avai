@@ -6,7 +6,9 @@
 #include "../include/parser.h"
 #include "../include/executor.h"
 #include "../include/redirection.h"
+#include "../include/sysinfo.h"
 #include "../include/launcher.h"
+#include "../include/runner.h"
 #include "../include/pipe.h"
 #define MAX_INPUT 256
 #define MAX_HISTORY 100
@@ -63,9 +65,21 @@ int main()
 
             continue;
         }
-        if (strcmp(args[0], "open") == 0) {
+        if (strcmp(args[0], "open") == 0)
+        {
             open_target(args);
             continue;
+        }
+        if (strcmp(args[0], "run") == 0)
+        {
+            run_command(args);
+            continue;
+        }
+        if (strcmp(args[0], "sysinfo") == 0)
+        {
+            show_sysinfo();
+            continue;
+            ;
         }
 
         int pipe_index = find_pipe(args);

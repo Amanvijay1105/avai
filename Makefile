@@ -1,12 +1,13 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
-
 SRC = src/core/gulabo.c \
       src/core/parser.c \
       src/core/executor.c \
       src/core/redirection.c \
       src/core/pipe.c \
-      src/core/launcher.c
+      src/core/launcher.c \
+      src/core/sysinfo.c \
+      src/core/runner.c
 
 all:
 	mkdir -p bin
